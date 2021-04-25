@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.7.2'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    pluginName 'Json To MapOf Converter'
+    plugins = ['Kotlin', 'android']
+    updateSinceUntilBuild false
+    localPath  '/home/local/ZOHOCORP/siva-6508/workspace_studio/android-studio/'
+}
+
+patchPluginXml {
+    changeNotes """
+      Version 1.0<br>
+      <em>Provided an interface to convert json to equivalent kotlin mapOf version.</em>"""
+}
+test {
+    useJUnitPlatform()
+}
