@@ -1,15 +1,21 @@
 <idea-plugin>
     <id>org.example.JsonToMapOfConverter</id>
     <name>Json To MapOf Converter</name>
-    <vendor email="support@mycompany.com" url="http://www.mycompany.com">My Company</vendor>
+    <vendor email="sivabalansiva96@gmail.com" url="https://github.com/sivabalansiva/JsonToMapOfConverter">Sivabalan</vendor>
 
     <description><![CDATA[
-    Use this plugin to convert json to mapOf equivalent kotlin code.<br>
+    Converts json to mapOf equivalent kotlin code.<br>
     ]]></description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+
+    <version>1.0.0</version>
+
+    <change-notes>Initial release of the plugin.</change-notes>
+
+    <idea-version since-build="193" />
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -17,8 +23,12 @@
 
     <actions>
         <!-- Add your actions here -->
-        <action id="com.plugin.mapofconverter.JsonToMapOfAction" class="com.plugin.mapofconverter.JsonToMapOfAction"
-                text="Generate mapOf from Json" description="Generate mapOf kotlin equivalent from Json">
+        <action
+            id="com.plugin.mapofconverter.JsonToMapOfAction"
+            class="com.plugin.mapofconverter.JsonToMapOfAction"
+            text="Generate MapOf from Json"
+            description="Generate mapOf kotlin equivalent from Json">
+
             <add-to-group group-id="GenerateGroup" anchor="last"/>
         </action>
     </actions>

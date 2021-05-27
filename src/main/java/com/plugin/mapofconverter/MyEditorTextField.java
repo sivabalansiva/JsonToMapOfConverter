@@ -1,6 +1,7 @@
 package com.plugin.mapofconverter;
 
 import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.EditorSettings;
 import com.intellij.openapi.editor.ex.EditorEx;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypes;
@@ -36,11 +37,11 @@ public class MyEditorTextField extends EditorTextField {
 
     @Override
     protected EditorEx createEditor() {
-        var editor = super.createEditor();
+        EditorEx editor = super.createEditor();
         editor.setHorizontalScrollbarVisible(true);
         editor.setVerticalScrollbarVisible(true);
 
-        var settings = editor.getSettings();
+        EditorSettings settings = editor.getSettings();
         settings.setLineNumbersShown(true);
         settings.setAutoCodeFoldingEnabled(true);
         settings.setFoldingOutlineShown(true);

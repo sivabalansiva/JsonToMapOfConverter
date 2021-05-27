@@ -4,6 +4,8 @@ import com.google.gson.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Iterator;
+
 public class Utils {
 
     final String KOTLIN_FUNCTION_DECLARATION = "fun getInputData() : String {";
@@ -45,7 +47,7 @@ public class Utils {
     }
 
     private String getMethodDeclarationSyntax(String methodName) {
-        if(methodName == null || methodName.isBlank()) {
+        if(methodName == null || methodName.trim().isEmpty()) {
             return KOTLIN_FUNCTION_DECLARATION;
         } else {
             return "fun " + methodName + "(): String {";
@@ -53,8 +55,8 @@ public class Utils {
     }
 
     public String getMapOfCodeFromJsonString(@NotNull String jsonString, @Nullable String methodName, boolean serializeNulls) {
-        var sb = new StringBuilder();
-        var jsonElement = new Gson().fromJson(jsonString, JsonElement.class);
+        StringBuilder sb = new StringBuilder();
+        JsonElement jsonElement = new Gson().fromJson(jsonString, JsonElement.class);
 
         sb.append(getMethodDeclarationSyntax(methodName));
         sb.append(newLine);
@@ -74,11 +76,11 @@ public class Utils {
 
     private void jsonToMapOfRecursive(StringBuilder sb, JsonElement jsonValue) {
         if (jsonValue instanceof JsonObject) {
-            var value = (JsonObject) jsonValue;
+            JsonObject value = (JsonObject) jsonValue;
             sb.append(mapOf);
-            var jsonKeySetIterator = value.keySet().iterator();
+            Iterator<String> jsonKeySetIterator = value.keySet().iterator();
             while (jsonKeySetIterator.hasNext()) {
-                var jsonKey =  jsonKeySetIterator.next();
+                String jsonKey =  jsonKeySetIterator.next();
                 sb.append(newLine);
                 sb.append('"');
                 sb.append(jsonKey);
@@ -92,9 +94,9 @@ public class Utils {
             sb.append(newLine);
             sb.append(closeParenthesis);
         } else if(jsonValue instanceof JsonArray) {
-            var value = (JsonArray) jsonValue;
+            JsonArray value = (JsonArray) jsonValue;
             sb.append(arrayOf);
-            var jsonArraySize = value.size();
+            int jsonArraySize = value.size();
             for(int index = 0; index < jsonArraySize; index++) {
                 sb.append(newLine);
                 jsonToMapOfRecursive(sb, value.get(index));
@@ -105,10 +107,10 @@ public class Utils {
             sb.append(newLine);
             sb.append(closeParenthesis);
         } else if (jsonValue instanceof JsonPrimitive) {
-            var value = (JsonPrimitive) jsonValue;
-            sb.append(value.toString());
+            JsonPrimitive value = (JsonPrimitive) jsonValue;
+            sb.append(value);
         } else if(jsonValue instanceof JsonNull) {
-            sb.append(JsonNull.INSTANCE.toString());
+            sb.append(JsonNull.INSTANCE);
         }
     }
 

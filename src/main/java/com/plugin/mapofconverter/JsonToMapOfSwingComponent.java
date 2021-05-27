@@ -2,13 +2,13 @@ package com.plugin.mapofconverter;
 
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
+import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
-
-import static com.intellij.openapi.fileTypes.StdFileTypes.JS;
 
 public class JsonToMapOfSwingComponent extends JComponent {
     public JPanel contentPane;
@@ -40,14 +40,18 @@ public class JsonToMapOfSwingComponent extends JComponent {
         buttonCancel.addActionListener(e -> onCancel());
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(
+                e -> onCancel(),
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+                JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT
+        );
         setVisible(true);
     }
 
     private void onGenerateClicked() {
-        var inputText = myEditorTextField.getText();
-        var methodName = methodNameTextField.getText();
-        var serializeNulls = serializeNullsCheckBox.isSelected();
+        String inputText = myEditorTextField.getText();
+        String methodName = methodNameTextField.getText();
+        boolean serializeNulls = serializeNullsCheckBox.isSelected();
         dialogActionListener.onGenerateClicked(inputText, methodName, serializeNulls);
     }
 
@@ -59,10 +63,11 @@ public class JsonToMapOfSwingComponent extends JComponent {
      * As custom create is enabled for MyEditorTextField, createUIComponents is called for better rendering out the ui
      */
     private void createUIComponents() {
-        myEditorTextField = new MyEditorTextField(project, JS);
+        FileType js = FileTypeManager.getInstance().getStdFileType("JavaScript");
+        myEditorTextField = new MyEditorTextField(project, js);
         myEditorTextField.setPlaceholder("Enter json here");
         myEditorTextField.setOneLineMode(false);
         myEditorTextField.setAutoscrolls(true);
-        myEditorTextField.setFileType(JS);
+        myEditorTextField.setFileType(js);
     }
 }
