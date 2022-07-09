@@ -11,5 +11,3 @@ public class JsonToMapOfAction extends AnAction {
         new JsonToMapOfDialog(anActionEvent.getProject()).showAndGet();
     }
 }
-
-
