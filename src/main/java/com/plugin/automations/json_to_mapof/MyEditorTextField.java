@@ -1,4 +1,4 @@
-package com.plugin.mapofconverter;
+package com.plugin.automations.json_to_mapof;
 
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.EditorSettings;
@@ -35,6 +35,7 @@ public class MyEditorTextField extends EditorTextField {
         super(document, project, fileType, isViewer, oneLineMode);
     }
 
+    @NotNull
     @Override
     protected EditorEx createEditor() {
         EditorEx editor = super.createEditor();

@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.6.0'
+    id 'org.jetbrains.intellij' version '1.11.0'
 }
 
 group 'org.example'
@@ -11,7 +11,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+}
+
+runIde {
+//    ideDir = file('/Applications/Android Studio.app/Contents')
+    ideDir = file('E:\\Android Studio')
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -19,11 +24,13 @@ project.intellij {
     pluginName = 'Json To MapOf Converter'
     plugins = ['Kotlin', 'android']
     updateSinceUntilBuild = false
-    localPath = '/Applications/Android Studio Preview.app/Contents'
+//    localPath = '/Applications/Android Studio.app/Contents'
+    localPath = 'E:\\Android Studio'
 }
 
 tasks.patchPluginXml {
     changeNotes = """
       Version 1.0<br>
-      <em>Provided an interface to convert json to equivalent kotlin mapOf version.</em>"""
+      <em>Provided an interface to convert json to equivalent kotlin mapOf version.</em>
+      <em>Provided an interface to import new string translations.</em>"""
 }

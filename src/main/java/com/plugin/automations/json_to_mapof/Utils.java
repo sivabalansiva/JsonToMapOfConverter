@@ -1,4 +1,4 @@
-package com.plugin.mapofconverter;
+package com.plugin.automations.json_to_mapof;
 
 import com.google.gson.*;
 import org.jetbrains.annotations.NotNull;

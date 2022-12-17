@@ -1,13 +1,13 @@
-package com.plugin.mapofconverter;
+package com.plugin.automations.import_translations;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class JsonToMapOfAction extends AnAction {
+public class ImportStringTranslationsAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-        new JsonToMapOfDialog(anActionEvent.getProject()).showAndGet();
+        new ImportTranslationStringsDialog().showAndGet();
     }
 }

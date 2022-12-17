@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.plugin.mapofconverter.JsonToMapOfSwingComponent">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.plugin.automations.json_to_mapof.JsonToMapOfSwingComponent">
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
@@ -83,7 +83,7 @@
               <text value="Serialize Nulls"/>
             </properties>
           </component>
-          <component id="65301" class="com.plugin.mapofconverter.MyEditorTextField" binding="myEditorTextField" custom-create="true" default-binding="true">
+          <component id="65301" class="com.plugin.automations.json_to_mapof.MyEditorTextField" binding="myEditorTextField" custom-create="true" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="1" use-parent-layout="false">
                 <minimum-size width="400" height="300"/>

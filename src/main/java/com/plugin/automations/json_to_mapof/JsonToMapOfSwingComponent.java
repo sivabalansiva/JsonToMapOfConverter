@@ -1,4 +1,4 @@
-package com.plugin.mapofconverter;
+package com.plugin.automations.json_to_mapof;
 
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
@@ -12,10 +12,10 @@ import java.awt.event.KeyEvent;
 
 public class JsonToMapOfSwingComponent extends JComponent {
     public JPanel contentPane;
-    JButton buttonGenerate;
-    JButton buttonCancel;
-    JCheckBox serializeNullsCheckBox;
-    JTextField methodNameTextField;
+    public JButton buttonGenerate;
+    public JButton buttonCancel;
+    public JCheckBox serializeNullsCheckBox;
+    public JTextField methodNameTextField;
     private MyEditorTextField myEditorTextField;
 
     private final Project project;

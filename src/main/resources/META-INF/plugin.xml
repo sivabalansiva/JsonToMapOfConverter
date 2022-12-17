@@ -1,10 +1,11 @@
 <idea-plugin>
-    <id>org.example.JsonToMapOfConverter</id>
-    <name>Json To MapOf Converter</name>
+    <id>org.plugin.automations</id>
+    <name>Android Studio Automations</name>
     <vendor email="sivabalansiva96@gmail.com" url="https://github.com/sivabalansiva/JsonToMapOfConverter">Sivabalan</vendor>
 
     <description><![CDATA[
-    Converts json to mapOf equivalent kotlin code.<br>
+    1. Converts json to mapOf equivalent kotlin code.<br>
+    2. Import new language translations to string resources.<br>
     ]]></description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -15,7 +16,7 @@
 
     <change-notes>Initial release of the plugin.</change-notes>
 
-    <idea-version since-build="193" />
+    <idea-version since-build="203" />
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -24,12 +25,21 @@
     <actions>
         <!-- Add your actions here -->
         <action
-            id="com.plugin.mapofconverter.JsonToMapOfAction"
-            class="com.plugin.mapofconverter.JsonToMapOfAction"
-            text="Generate MapOf from Json"
-            description="Generate mapOf kotlin equivalent from Json">
+                id="com.plugin.automations.json_to_mapof.JsonToMapOfAction"
+                class="com.plugin.automations.json_to_mapof.JsonToMapOfAction"
+                text="Generate MapOf from Json"
+                description="Generate mapOf kotlin equivalent from Json">
 
             <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+
+        <action
+                id="com.plugin.automations.import_translations.ImportStringTranslationsAction"
+                class="com.plugin.automations.import_translations.ImportStringTranslationsAction"
+                text="Import String Translations"
+                description="Import new language translations to string resources.">
+
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>
