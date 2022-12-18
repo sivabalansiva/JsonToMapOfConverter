@@ -20,7 +20,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Optional;
 
 public class StringTranslationsImporter {
 
@@ -49,9 +48,16 @@ public class StringTranslationsImporter {
 
     public void addAllStrings(String resourcePath, String translationStringsPath) throws Exception {
         var translationDirectory = new File(translationStringsPath);
-        var translationFilesList = Optional.ofNullable(translationDirectory.listFiles()).orElse(new File[0]);
+        var translationFilesList = translationDirectory.listFiles();
 
         eventHandler.onImportTranslationsStarted();
+
+        if (translationFilesList == null || translationFilesList.length == 0) {
+            eventHandler.onImportTranslationsError(null, "No String translations found.");
+            eventHandler.onImportTranslationsEnded();
+            return;
+        }
+
         for (File file : translationFilesList) {
             // append '/' if resourcePath does not end with '/'
             resourcePath = resourcePath.endsWith("/") ? resourcePath : resourcePath + "/";
